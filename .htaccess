@@ -1,0 +1,16 @@
+<IfModule mod_headers.c>
+    # Cho phép truy cập file tĩnh (CSS, JS, font...) từ domain khác
+    <FilesMatch "\.(css|js|woff2?|ttf|eot|svg)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# Thêm cache để tăng tốc độ tải
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+</IfModule>
